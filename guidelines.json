@@ -1,0 +1,161 @@
+{
+    "theme_and_archetype": {
+      "theme": "dark",
+      "archetype": "5 (Luxury)",
+      "description": "Cinematic, moody, expensive feel. Emphasizes visual storytelling with large immersive photography, generous spacing, and an editorial layout."
+    },
+    "typography": {
+      "rules": [
+        "No generic defaults like Inter or Roboto for headings.",
+        "Headlines (Size > 32px) MUST use tight letter spacing: tracking-tight.",
+        "Overlines/Labels MUST be Uppercase + Tiny + Wide Spacing (tracking-[0.2em]).",
+        "Line Height: Tight (leading-none) for headers, Loose (leading-relaxed) for body."
+      ],
+      "fonts": {
+        "heading": {
+          "family": "Cormorant Garamond",
+          "weights": ["300", "400", "600"],
+          "description": "Elegant serif for editorial, high-end feel.",
+          "import_url": "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&display=swap"
+        },
+        "body": {
+          "family": "Outfit",
+          "weights": ["300", "400", "500"],
+          "description": "Clean, geometric modern sans for readability and contrast.",
+          "import_url": "https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500&display=swap"
+        }
+      },
+      "scales": {
+        "h1": "text-4xl sm:text-5xl lg:text-6xl font-heading font-light tracking-tight",
+        "h2": "text-2xl sm:text-3xl lg:text-4xl font-heading font-light tracking-tight",
+        "h3": "text-xl sm:text-2xl font-heading",
+        "h4": "text-lg sm:text-xl font-heading",
+        "body": "text-base font-body text-gray-300 leading-relaxed",
+        "label": "text-xs font-body uppercase tracking-[0.2em] text-gray-400"
+      }
+    },
+    "colors": {
+      "background": {
+        "primary": "#0A0A0A",
+        "secondary": "#141414",
+        "tertiary": "#1A1A1A"
+      },
+      "text": {
+        "primary": "#F8F9FA",
+        "secondary": "#9CA3AF",
+        "accent": "#D4AF37"
+      },
+      "accent": {
+        "primary": "#D4AF37",
+        "hover": "#E5C158",
+        "muted": "rgba(212, 175, 55, 0.2)"
+      },
+      "surfaces": {
+        "glass": "bg-black/60 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)]",
+        "card": "bg-[#141414] border border-white/5",
+        "input": "bg-transparent border-b border-white/20 focus:border-[#D4AF37] outline-none"
+      }
+    },
+    "spacing_and_layout": {
+      "generous_spacing": "Use p-8, p-12, p-16, py-24 to create breathing room.",
+      "grids": {
+        "marketing": "Asymmetric Bento Grids. Base Grid: grid-cols-1 md:grid-cols-12 gap-8.",
+        "dashboard": "Control Room Grid. Base Grid: grid-cols-1 md:grid-cols-4 gap-6. Dense but clear."
+      },
+      "alignment": "Left-align paragraphs and dense content. Center-align hero headings only if visually balanced.",
+      "containers": "Max-width 7xl (max-w-7xl) for main content, full bleed for hero images."
+    },
+    "components_and_interactions": {
+      "buttons": {
+        "primary": "bg-[#D4AF37] text-black font-body font-medium px-8 py-3 rounded-none hover:bg-[#E5C158] transition-colors duration-300",
+        "secondary": "bg-transparent border border-white/20 text-white font-body px-8 py-3 rounded-none hover:border-white/60 transition-colors duration-300",
+        "ghost": "bg-transparent text-white hover:text-[#D4AF37] transition-colors duration-300"
+      },
+      "forms": {
+        "inputs": "Use Shadcn Input, but heavily customized. Strip borders except bottom, or use 1px solid border-white/10 with bg-black/40. Focus states MUST highlight with #D4AF37.",
+        "calendar": "Shadcn Calendar. Dark theme override. Selected date bg-[#D4AF37] text-black.",
+        "select": "Shadcn Select. bg-[#141414] border-white/10 text-white."
+      },
+      "cards": {
+        "room_card": "Flat background (#141414), 1px subtle border (border-white/5), no rounded corners (rounded-none). Image wrapper overflow-hidden with scale on hover."
+      },
+      "navigation": {
+        "header": "Sticky top-0 z-50. Use Crystal Glassmorphism surface. Must have logo, navigation links, and primary CTA (Book Now).",
+        "footer": "Massive space (py-24). Brand statement in large serif, small utility links."
+      },
+      "motion": {
+        "hover": "Images scale up slightly (scale-105) over 0.5s ease. Buttons translate-y-[-2px] with increased shadow.",
+        "entrance": "Staggered fade-up for list items. Framer Motion recommended."
+      },
+      "testing_attributes": {
+        "requirement": "All interactive and key informational elements MUST include a data-testid attribute in kebab-case, role-based.",
+        "examples": [
+          "data-testid='book-now-button'",
+          "data-testid='room-search-input'",
+          "data-testid='date-picker-trigger'",
+          "data-testid='login-submit-button'",
+          "data-testid='room-card-standard'"
+        ]
+      }
+    },
+    "image_urls": {
+      "hero": [
+        {
+          "url": "https://images.pexels.com/photos/16239257/pexels-photo-16239257.jpeg",
+          "description": "Minimalist classic hotel facade against a dark dramatic sky. Use for Main Homepage Hero.",
+          "overlay": "bg-black/40 to ensure text contrast."
+        }
+      ],
+      "rooms": [
+        {
+          "category": "Standard",
+          "url": "https://images.pexels.com/photos/4887696/pexels-photo-4887696.jpeg",
+          "description": "Stylish bedroom with brick wall and ambient lighting."
+        },
+        {
+          "category": "Deluxe",
+          "url": "https://images.pexels.com/photos/10343928/pexels-photo-10343928.jpeg",
+          "description": "Dark ambient hotel room with bed and soft lighting through curtains."
+        },
+        {
+          "category": "Suite",
+          "url": "https://images.unsplash.com/photo-1629140727571-9b5c6f6267b4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDN8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBob3RlbCUyMHJvb20lMjBkYXJrfGVufDB8fHx8MTc4MDM4OTgwMHww&ixlib=rb-4.1.0&q=85",
+          "description": "White bed with gray pillow, luxurious suite feel."
+        }
+      ],
+      "experiences": [
+        {
+          "url": "https://images.pexels.com/photos/34723813/pexels-photo-34723813.jpeg",
+          "description": "Dark atmospheric restaurant table setup. Use for Dining/Experience section."
+        }
+      ]
+    },
+    "pages": {
+      "home": {
+        "layout": "Hero Section (Full bleed image, large serif heading, subtle scroll indicator) -> Sticky Booking Bar (Dates, Guests, Check Availability) -> Editorial Room Highlights (Bento grid of 3 rooms) -> Experience/Dining Section -> Footer."
+      },
+      "search_and_rooms": {
+        "layout": "List view with large images. Left side: Filters (Category, Price). Right side: Room Cards. Room cards should be horizontal with image on left, details and price on right."
+      },
+      "booking_details": {
+        "layout": "Two-column layout. Left: Room Image, Details, Amenities, Review ratings. Right: Sticky Summary Card with Dates, Price Breakdown, and Stripe Payment CTA."
+      },
+      "user_dashboard": {
+        "layout": "Control Room Grid. Sidebar navigation. Main area: List of current and past bookings. Ability to Cancel reservation with a styled dialog."
+      },
+      "admin_dashboard": {
+        "layout": "Control Room Grid. Stats overview (Revenue, Occupancy). Data tables for Bookings and Rooms. Add/Edit room modal."
+      }
+    },
+    "instructions_to_main_agent": {
+        "1": "Strictly follow the Dark Theme and Luxury Archetype. Do not use pure white backgrounds anywhere.",
+        "2": "Use Tailwind classes: bg-[#0A0A0A] for main background, text-[#F8F9FA] for primary text, text-[#D4AF37] for accents.",
+        "3": "For UI components, use Shadcn but heavily customize them. Remove heavy rounded corners (use rounded-none or max rounded-sm).",
+        "4": "Integrate React Router for navigation. Ensure pages are created using .js extensions (not .tsx) as per user environment.",
+        "5": "Implement Stripe payment simulation using a simple mocked flow or Stripe Elements if API key is provided.",
+        "6": "Store bookings and room availability using an SQLite database (OOP + DB) or a structured JSON file per the requirement.",
+        "7": "Ensure EVERY interactive element (button, link, input) has a unique data-testid attribute for testing.",
+        "8": "For Icons, install and use @phosphor-icons/react for a high-end, thin duotone look.",
+        "9": "Include the Google Fonts (Cormorant Garamond, Outfit) in the main index.html or global CSS."
+    }
+}
