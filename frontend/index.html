@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - LuxeHotel</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="logo">LuxeHotel.</a>
+    <nav>
+        <ul>
+            <!-- Populated by auth.js -->
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section class="hero">
+        <h1>Experience True Luxury</h1>
+        <p>Book your perfect stay with us today.</p>
+    </section>
+
+    <form class="search-bar" id="searchForm">
+        <div class="form-group">
+            <label>City</label>
+            <input type="text" id="cityInput" class="form-control" placeholder="e.g. Mumbai">
+        </div>
+        <div class="form-group">
+            <label>Check In</label>
+            <input type="date" id="checkIn" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Check Out</label>
+            <input type="date" id="checkOut" class="form-control">
+        </div>
+        <button type="submit" class="btn">Search Rooms</button>
+        <button type="button" class="btn btn-secondary" style="margin-left: 10px;" onclick="window.location.href='index.html'">Clear</button>
+    </form>
+
+    <div class="room-grid" id="roomGrid">
+        <!-- Rooms will be injected here via JavaScript -->
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2026 LuxeHotel. All rights reserved.</p>
+</footer>
+
+<script src="js/auth.js"></script>
+<script>
+    const API_BASE = 'http://localhost:8080/api';
+
+    document.getElementById('searchForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const checkIn = document.getElementById('checkIn').value;
+        const checkOut = document.getElementById('checkOut').value;
+        const city = document.getElementById('cityInput').value;
+        loadRooms(checkIn, checkOut, city, '');
+    });
+
+    async function loadRooms(checkIn = '', checkOut = '', city = '', hotelName = '') {
+        const grid = document.getElementById('roomGrid');
+        grid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center;">Loading rooms...</p>';
+
+        try {
+            let url = `${API_BASE}/rooms`;
+            const params = new URLSearchParams();
+            if (checkIn) params.append('checkIn', checkIn);
+            if (checkOut) params.append('checkOut', checkOut);
+            if (city) params.append('city', city);
+            if (hotelName) params.append('hotelName', hotelName);
+            
+            if (params.toString()) {
+                url += `?${params.toString()}`;
+            }
+
+            const response = await fetch(url);
+            const rooms = await response.json();
+            
+            grid.innerHTML = '';
+
+            if (rooms.length === 0) {
+                grid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center;">No rooms available for the selected criteria.</p>';
+                return;
+            }
+
+            rooms.forEach(room => {
+                const card = document.createElement('div');
+                card.className = 'room-card';
+                card.innerHTML = `
+                    <img src="${room.imageUrl}" alt="Room Image" class="room-img">
+                    <div class="room-details">
+                        <div class="room-type">${room.type} at ${room.hotel.name}, ${room.hotel.city}</div>
+                        <h3>Room ${room.roomNumber}</h3>
+                        <p class="room-price">₹<span>${room.pricePerNight}</span> <span>/ night</span></p>
+                        <p style="margin-bottom: 1rem; color: var(--text-muted); font-size: 0.95rem;">${room.description}</p>
+                        <a href="room-details.html?roomId=${room.id}" class="btn" style="width: 100%;">View Details & Book</a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        } catch (error) {
+            grid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: red;">Error loading rooms. Ensure the backend server is running.</p>';
+            console.error(error);
+        }
+    }
+
+    
+    document.getElementById('checkIn').addEventListener('change', function() {
+        document.getElementById('checkOut').min = this.value;
+    });
+
+   
+    loadRooms();
+</script>
+</body>
+</html>
