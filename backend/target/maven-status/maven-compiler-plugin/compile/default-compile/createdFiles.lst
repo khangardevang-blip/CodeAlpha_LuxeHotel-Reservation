@@ -1,0 +1,17 @@
+com\example\hotel\controller\AdminController.class
+com\example\hotel\controller\UserController.class
+com\example\hotel\HotelReservationApplication.class
+com\example\hotel\repository\ReservationRepository.class
+com\example\hotel\model\User.class
+com\example\hotel\model\Reservation.class
+com\example\hotel\repository\HotelRepository.class
+com\example\hotel\repository\RoomRepository.class
+com\example\hotel\model\Hotel.class
+com\example\hotel\repository\ReviewRepository.class
+com\example\hotel\controller\HotelController.class
+com\example\hotel\DatabaseSeeder.class
+com\example\hotel\repository\UserRepository.class
+com\example\hotel\model\RoomType.class
+com\example\hotel\model\Review.class
+com\example\hotel\model\Room.class
+com\example\hotel\service\HotelService.class
