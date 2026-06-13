@@ -1,7 +1,7 @@
 services:
   - type: web
     name: hotel-backend
-    env: docker
+    runtime: docker
     plan: free
     region: oregon
     rootDir: backend
@@ -10,8 +10,9 @@ services:
       - key: PORT
         value: "8080"
 
-  - type: static
+  - type: web
     name: hotel-frontend
+    runtime: static
     plan: free
     rootDir: frontend
     buildCommand: "echo 'No build step required'"
