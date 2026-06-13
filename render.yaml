@@ -8,13 +8,11 @@ services:
     dockerfilePath: ./Dockerfile
     envVars:
       - key: PORT
-        value: 8080
+        value: "8080"
 
-  - type: web
+  - type: static
     name: hotel-frontend
-    env: static
     plan: free
-    region: oregon
     rootDir: frontend
-    buildCommand: ""
+    buildCommand: "echo 'No build step required'"
     staticPublishPath: ./
